@@ -80,10 +80,6 @@ def accept(server):
                         f1.close()
                         userAdds[data1[2]].send((data1[0]+data1[3]).encode())
                         break
-                if not data:
-                    # 关闭客户端
-                    r.close()
-                    rlist.remove(r)
                 else:
                     # 转发信息给其他客户端
                     print(data.decode(), end='')
