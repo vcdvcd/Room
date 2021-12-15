@@ -73,8 +73,12 @@ def accept(server):
                     rlist.remove(r)
                 if len(data.decode().split(" ")) > 2:
                     if data.decode().split(" ")[1] == 'sendto':
+                        msg = data.decode().split(":")
                         data1 = data.decode().split(" ")
-                        userAdds[data1[2]].send((data.decode().split(" ")[0]+data1[3]).encode())
+                        f1 = open('message.txt', 'a')
+                        f1.write(msg[0]+" 发送给 "+data1[2]+": "+data1[3])
+                        f1.close()
+                        userAdds[data1[2]].send((data1[0]+data1[3]).encode())
                         break
                 if not data:
                     # 关闭客户端
